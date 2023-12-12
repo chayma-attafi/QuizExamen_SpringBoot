@@ -36,7 +36,7 @@ public class Quiz implements Serializable {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JsonIgnore
     @ToString.Exclude
-    @ManyToMany(mappedBy ="quizList")
+    @ManyToMany(mappedBy ="quizList",fetch=FetchType.EAGER)
     List<Candidat> condidatList;
 
 }

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.examenquiz.Entity.Quiz;
 import tn.esprit.examenquiz.ServiceInterface.QuizService;
 
-@Controller
 @AllArgsConstructor
 @RestController
 @RequestMapping("Quiz")
@@ -18,9 +17,14 @@ public class QuizController {
         return quizService.ajouterQuiz(quiz);
     }
 
-    @PostMapping("/affecterQuizCandidat/{idCandidat}/{titreQuiz}")
-    public Quiz affecterQuizCandidat(@PathVariable String titreQuiz,
-                                     @PathVariable Integer idCandidat) {
+    @PutMapping("/affecterQuizCandidat/{idCandidat}/{titreQuiz}")
+    public Quiz affecterQuizCandidat(@PathVariable("titreQuiz") String titreQuiz,
+                                     @PathVariable("idCandidat") Integer idCandidat) {
         return quizService.affecterQuizCandidat(titreQuiz, idCandidat);
+    }
+
+    @GetMapping("/recupererQuizPlusDifficile")
+    public void recupererQuizPlusDifficile() {
+        quizService.recupererQuizPlusDifficile();
     }
 }

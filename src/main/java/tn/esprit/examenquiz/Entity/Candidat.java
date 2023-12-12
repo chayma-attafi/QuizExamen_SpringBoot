@@ -30,6 +30,6 @@ public class Candidat implements Serializable {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JsonIgnore
     @ToString.Exclude
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     List<Quiz> quizList;
 }

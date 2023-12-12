@@ -30,7 +30,7 @@ public class Question implements Serializable {
     Complexite complexite;
 
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    //@JsonIgnore
+    @JsonIgnore
     @ToString.Exclude
     @ManyToOne
     Quiz quiz;
@@ -38,7 +38,7 @@ public class Question implements Serializable {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     //@JsonIgnore
     @ToString.Exclude
-    @OneToMany
+    @OneToMany(fetch=FetchType.EAGER)
     List<Reponse> reponseList;
 
 }
